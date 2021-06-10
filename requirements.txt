@@ -1,0 +1,6 @@
+# this is the "requirements.txt" file
+# it might be helpful to use pandas. if you do, uncomment the last line below ...
+
+requests
+python-dotenv
+# pandas
