@@ -3,4 +3,5 @@
 
 requests
 python-dotenv
-# pandas
+pandas
+clipboard
