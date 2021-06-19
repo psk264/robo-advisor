@@ -8,6 +8,10 @@ from requests.models import Response
 import json
 import os
 import plotly.express as px
+from plotly.subplots import make_subplots
+import plotly.graph_objects as go
+
+
 
 # Function to get all the valid active symbol which will be used for user input validation
 def get_active_symbols(API_KEY):
@@ -136,4 +140,45 @@ def draw_trend_line(timeseries_df,symbol):
         legend_title = 'Close/Low Price'
     )
     fig.show()
+    
+    rev_close_price = list(close_price)
+    rev_close_price.reverse()
+    rev_close_price.remove(' ')
+    lowest_price = get_recent_low_price(timeseries_df)
+    delta_list = [len(close_price)]
+    for item in rev_close_price:
+        print(item)
+        delta = (float(item) - float(lowest_price))/float(lowest_price)
+        delta_list.append(delta)
+    
+    df_delta = {}
+    df_delta = DataFrame.from_dict(df_delta)
+    
+    # df_delta = df_delta.assign(close_price)
+    df_delta = df_delta.assign(delta=delta_list)
+
+    fig = px.line(df_delta, title = f'% Difference (close - low price) Trend for {symbol}')
+    
+    fig.update_layout(
+        xaxis_title = 'Date',
+        yaxis_title = '% Difference (close price -low price)'
+    )
+    fig.show()
+    
+    
+    # #subplots  - Reference: https://plotly.com/python/subplots/
+
+    # df = DataFrame.to_dict(df)
+    # df_delta = DataFrame.to_dict(df_delta)
+    
+    # fig = make_subplots(rows=2, cols=1)
+    # fig.add_trace(go.Scatter(df, title = f'Stock Price Trend for {symbol}'), row=1, col=1)
+    # fig.add_trace(go.Scatter(df_delta, title = f'% Difference (close - lowest) Trend for {symbol}'), row=2, col=1)
+    # fig.update_layout(
+    #     xaxis_title = 'Date',
+    #     legend_title = 'Close/Low Price'
+    # )
+
+    # fig.show()
+    
     
