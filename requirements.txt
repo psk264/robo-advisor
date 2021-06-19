@@ -5,3 +5,6 @@ requests
 python-dotenv
 pandas
 clipboard
+
+# For plotting graphs
+plotly.express

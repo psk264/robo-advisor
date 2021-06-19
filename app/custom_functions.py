@@ -1,10 +1,13 @@
 from datetime import time
+from matplotlib import colors
 import pandas as pd
 import clipboard
+from pandas.core.frame import DataFrame
 import requests
 from requests.models import Response
 import json
 import os
+import plotly.express as px
 
 # Function to get all the valid active symbol which will be used for user input validation
 def get_active_symbols(API_KEY):
@@ -94,7 +97,7 @@ def to_usd(my_price):
     """
     return f"${my_price:,.2f}" #> $12,000.71
 
-
+# function to calculate recent high price
 def get_recent_high_price(timeseries_df):
     #get first 100 rows
     top10_rows = timeseries_df.head(100)
@@ -105,7 +108,7 @@ def get_recent_high_price(timeseries_df):
     # print(high_price)
     return float(high_price[0])
 
-
+# function to calculate recent low price
 def get_recent_low_price(timeseries_df):
     top10_rows = timeseries_df.head(100)
     low_price_series = top10_rows['low']
@@ -113,3 +116,24 @@ def get_recent_low_price(timeseries_df):
     index =  pd.to_numeric(low_price_series).idxmin()    
     low_price = timeseries_df.loc[index, ['low']]
     return float(low_price[0])
+
+def draw_trend_line(timeseries_df,symbol):
+    close_price = pd.to_numeric(timeseries_df["close"])
+    low_price = pd.to_numeric(timeseries_df["low"])
+    
+    df = {}
+    df=DataFrame.from_dict(df)
+
+    #Reference: https://stackoverflow.com/questions/60372991/plotly-how-to-plot-two-lines-from-two-dataframe-columns-and-assign-hover-info-f
+    
+    df = df.assign(close = close_price)
+    df = df.assign(low= low_price)
+    # print(len(df))
+    fig = px.line(df, title = f'Stock Price Trend for {symbol}')
+    fig.update_layout(
+        xaxis_title = 'Date',
+        yaxis_title = 'Price (USD)',
+        legend_title = 'Close/Low Price'
+    )
+    fig.show()
+    

@@ -1,5 +1,4 @@
-from datetime import date, datetime
-from datetime import time
+from datetime import time, date, datetime
 from time import strftime, strptime
 import pandas as pd
 from pandas.core.tools.datetimes import to_datetime
@@ -7,6 +6,7 @@ import custom_functions as cf
 import requests
 import os
 from dotenv import load_dotenv
+
 
 print("Please wait while we get all active symbols for further processing")
 
@@ -70,8 +70,14 @@ for s in selected_symbols:
     
     # Buy or Not to Buy
     if (close_price < low_price*(1+0.2)):
-        print("Our analysis indicate you should BUY this stock:", s)
+        print(f"""Our analysis recommends you should BUY this stock: {s}. Because the closing price is less than the set threshold (20% above the recent low price).""")
+
     else:
-        print("Our analysis indicate you should NOT BUY this stock:", s)
+        print(f"""Our analysis recommends you should NOT BUY this stock: {s}. Because the closing price is greater than the set threshold (20% above the recent low price).""")
 
     print("*********************************************************")
+
+
+    # Plots - close and low price trend over time. 
+    # .. These graphs are opened in the browser new tab for each symbol
+    cf.draw_trend_line(timeseries_df,s)
