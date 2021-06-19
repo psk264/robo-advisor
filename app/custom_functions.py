@@ -159,7 +159,7 @@ def draw_trend_line(timeseries_df,symbol):
     fig = px.line(df_delta, title = f'% Difference (close - low price) Trend for {symbol}')
     
     fig.update_layout(
-        xaxis_title = 'Date',
+        xaxis_title = 'Week Number (0== oldest data)',
         yaxis_title = '% Difference (close price -low price)'
     )
     fig.show()
