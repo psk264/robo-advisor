@@ -143,11 +143,10 @@ def draw_trend_line(timeseries_df,symbol):
     
     rev_close_price = list(close_price)
     rev_close_price.reverse()
-    rev_close_price.remove(' ')
     lowest_price = get_recent_low_price(timeseries_df)
-    delta_list = [len(close_price)]
+    delta_list = []
     for item in rev_close_price:
-        print(item)
+        # print(item)
         delta = (float(item) - float(lowest_price))/float(lowest_price)
         delta_list.append(delta)
     
