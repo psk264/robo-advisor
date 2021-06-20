@@ -1,4 +1,4 @@
-# robo-advisor
+# Robo Advisor 
 Project Assignment  - Robo Advisor 🤖 💰 🤓
 
 # Objective
