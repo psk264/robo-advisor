@@ -20,16 +20,18 @@ This program also shows two graphs which are automatically opened in the browser
 1. User input: single or multiple stock or cryptocurrency symbol
 2. Input validation: Validate the user input against the list of valid symbols pulled from API
 3. Terminal output: **_shown in screenshot above_** <br> 
-```Stock: MSFT
-   Run at: 06:27 PM on June 20th, 2021
-   Last Data from: June 18th, 2021
-   Close price: $259.43
-   Recent high price: $263.19
-   Recent low price: $224.26
-   Recommendation
+```
+Stock: MSFT
+Run at: 06:27 PM on June 20th, 2021
+Last Data from: June 18th, 2021
+Close price: $259.43
+Recent high price: $263.19
+Recent low price: $224.26
+Recommendation
 ``` 
 4. Data for each stock symbol stores in the ```.csv``` file under ***data*** directory under root folder **_Shown in the screenshot above_** <br>
-```timestamp,open,high,low,close,volume
+```
+timestamp,open,high,low,close,volume
 2021-06-18,259.63,262.3,258.75,259.43,37202217
 2021-06-17,256.065,261.75,256.01,260.9,27565537
 ```
@@ -57,12 +59,13 @@ This program also shows two graphs which are automatically opened in the browser
 ```ALPHAVANTAGE_API_KEY="<key>"```
 2. Add `.env` in the .gitignore file so this .env file is ignored by the version control to ensure user privacy 
 3. In the root directory of your local repository, create a new file called "requirements.txt" and update it with the following packages:
-```requests
-   python-dotenv
-   pandas
-   clipboard
-   # For plotting graphs
-   plotly.express
+```
+requests
+python-dotenv
+pandas
+clipboard
+# For plotting graphs
+plotly.express
 ```
 
 # Instructions
