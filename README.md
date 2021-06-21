@@ -2,7 +2,7 @@
 Project Assignment  - Robo Advisor 🤖 💰 🤓
 
 # Objective
-This repository holds the code for the robo-advisor project.  It helps user to enter their desired stock or cryptocurrency symbol and the program makes recommendation whether to buy or not buy the stock based on the following algorithm:
+This repository holds the code for the robo-advisor project.  It lets user enter their desired stock or cryptocurrency symbol and the program makes recommendation whether to buy or not buy the stock based on the following algorithm:
 
 If the close price of the stock is less than 20% above the recent low price than buy.  Otherwise, do not buy. 
 <br> <img src="https://user-images.githubusercontent.com/84349071/122690084-62d12b00-d1f5-11eb-91ed-b95dac14b547.png" alt="command-line-output" width="600" height="400"> <br>
